@@ -5,20 +5,20 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-     <link href="senate-data.css" rel="stylesheet" type="text/css"/>
+	<link href="senate-data.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-<header>
-	
+	<header>
+
 		<div class="container logo_house">
-			<img src="logotgif.png" alt="the logo of the TGIF"/>
+			<img src="logotgif.png" alt="the logo of the TGIF" />
 			<h1>Transparent Government in Fact</h1>
 		</div>
-</header>
+	</header>
 
-		<div class="container navigation">
-			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<div class="container navigation">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<button class="navbar-toggler" type="button" data- toggle="collapse" data-target="#navbarSupportedContent">
 				aria-controls="navbarSupportedContent" aria-
 				expanded="false" aria-label="Toggle navigation">
@@ -36,8 +36,26 @@
 						</a>
 						<div class="dropdown-menu" aria- labelledby="navbarDropdown">
 							<a class="active dropdown-item">House</a>
-                            <a class="dropdown-item" href="senate-data.html">Senate</a>
-							
+							<a class="dropdown-item" href="senate-data.html">Senate</a>
+
+						</div>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Attendance
+						</a>
+						<div class="dropdown-menu" aria- labelledby="navbarDropdown">
+							<a class="active dropdown-item">House</a>
+							<a class="dropdown-item" href="senate-data.html">Senate</a>
+						</div>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Party Loyality
+						</a>
+						<div class="dropdown-menu" aria- labelledby="navbarDropdown">
+							<a class="active dropdown-item">House</a>
+							<a class="dropdown-item" href="senate-data.html">Senate</a>
 						</div>
 					</li>
 				</ul>
@@ -45,65 +63,68 @@
 		</nav>
 	</div>
 
-		<header>
-			<div class="container-fluid">
-				<div class="text_congress">
+	<header>
+		<div class="container-fluid">
+			<div class="text_congress">
 
-					<h2>Congressmen</h2>
+				<h2>Congressmen</h2>
 
-					<p>The major power of the House is to pass federal legislation that affects the entire country, although its bills must also be passed by the Senate and further agreed to by the U.S. President before becoming law (unless both the House and Senate re-pass the legislation with a two-thirds majority in each chamber). The House has some exclusive powers: the power to initiate revenue bills, to impeach officials (impeached officials are subsequently tried in the Senate), and to elect the U.S. President in case there is no majority in the Electoral College.</p>
+				<p>The major power of the House is to pass federal legislation that affects the entire country, although its bills must also be passed by the Senate and further agreed to by the U.S. President before becoming law (unless both the House and Senate re-pass the legislation with a two-thirds majority in each chamber). The House has some exclusive powers: the power to initiate revenue bills, to impeach officials (impeached officials are subsequently tried in the Senate), and to elect the U.S. President in case there is no majority in the Electoral College.</p>
 
-					<p>Each U.S. state is represented in the House in proportion to its population as measured in the census, but every state is entitled to at least one representative. </p>
-				</div>
+				<p>Each U.S. state is represented in the House in proportion to its population as measured in the census, but every state is entitled to at least one representative. </p>
 			</div>
-		</header>
-
-		<div class="choice">
-			<p>Filter by party:
-				<input id="republican" type="checkbox" name="Party" value="Republican" required>Republican
-				<input id="democrat" type="checkbox" name="Party" value="Democrat" required>Democrat
-				<input id="independant" type="checkbox" name="Party" value="Independant" required>Independant
-			</p>
 		</div>
+	</header>
 
-		<div class="country">
-			<label for="region">Filter by State:</label>
-			<select name="region" id="region">
-				<option id="all">All</option>
-			</select>
-		</div>
+	<div class="choice">
+		<p>Filter by party:
+			<input id="republican" type="checkbox" name="Party" value="Republican" required>Republican
+			<input id="democrat" type="checkbox" name="Party" value="Democrat" required>Democrat
+			<input id="independant" type="checkbox" name="Party" value="Independant" required>Independant
+		</p>
+	</div>
 
-
-		<!--Table container-->
-
-		<table id="senate-data" class="table">
-
-
-			<tr class="jumbotron">
-
-				<th class="col-lg-3">Full Name</th>
-				<th class="col-lg-2">Party</th>
-				<th class="col-lg-2">State</th>
-				<th class="col-lg-2">Seniority</th>
-				<th class="col-lg-3">Total Votes</th>
-			</tr>
-			<!--               <td id="td1" onclick="content()">Full Name</td>-->
-
-			<tbody id="members"></tbody>
-		</table>
-
-		<div class="bottom">
-				<p class="jumbotron text-center">2016 TGIF All rights are reserved.</p>
-
-		</div>
-	
+	<div class="country">
+		<label for="region">Filter by State:</label>
+		<select name="region" id="region">
+			<option id="all">All</option>
+		</select>
+	</div>
 
 
-	<script src="pro-congress-113-house.js"></script>
-	<script src="senate-data.js"></script>
+	<!--Table container-->
+
+	<table id="senate-data" class="table">
+
+
+		<tr class="jumbotron">
+
+			<th class="col-lg-3">Full Name</th>
+			<th class="col-lg-2">Party</th>
+			<th class="col-lg-2">State</th>
+			<th class="col-lg-2">Seniority</th>
+			<th class="col-lg-3">Total Votes</th>
+		</tr>
+		<!--               <td id="td1" onclick="content()">Full Name</td>-->
+
+		<tbody id="members"></tbody>
+	</table>
+
+	<div class="bottom">
+		<p class="jumbotron text-center">2016 TGIF All rights are reserved.</p>
+
+	</div>
+
+
+
+	<!--	<script src="pro-congress-113-house.js"></script>-->
+
+
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<script src="senate-data.js"></script>
+
 
 </body>
 

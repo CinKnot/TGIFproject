@@ -1,7 +1,55 @@
-var members = data.results[0].members;
+var region = document.getElementById("region");
+var republican = document.getElementById('republican');
+var democrat = document.getElementById('democrat');
+var independant = document.getElementById('independant');
 
 
-//createTable();
+getHouseData()
+
+function getHouseData() {
+
+	fetch('https://api.propublica.org/congress/v1/113/senate/members.json', {
+			method: 'GET',
+			headers: {
+				'X-API-Key': "VGBTUMsjDxdmbxbqPyWJy7BBYeuophxBMi4ekoQB"
+			}
+		})
+		.then(r => r.json())
+		.then(json => {
+			console.log(json);
+			data = json;
+			members = data.results["0"].members;
+		
+			myStatesArray()
+			selectState()
+			
+			
+republican.addEventListener('click', function () {
+	var filteredArray = myFilter();
+	console.log(filteredArray)
+	createTable(filteredArray);
+});
+
+
+democrat.addEventListener('click', function () {
+	var filteredArray = myFilter();
+	console.log(filteredArray)
+	createTable(filteredArray);
+});
+
+independant.addEventListener('click', function () {
+	var filteredArray = myFilter();
+	console.log(filteredArray)
+	createTable(filteredArray);    
+});
+
+region.addEventListener('click', function () {
+var filteredArray = myFilter();
+	console.log(filteredArray)
+	createTable(filteredArray);
+      });
+	})
+}
 
 function createTable(array) {
 
@@ -45,34 +93,6 @@ function createTable(array) {
 	
 	}
 }
-
-var republican = document.getElementById('republican');
-republican.addEventListener('click', function () {
-	var filteredArray = myFilter();
-	console.log(filteredArray)
-	createTable(filteredArray);
-});
-var democrat = document.getElementById('democrat');
-democrat.addEventListener('click', function () {
-	var filteredArray = myFilter();
-	console.log(filteredArray)
-	createTable(filteredArray);
-});
-var independant = document.getElementById('independant');
-independant.addEventListener('click', function () {
-	var filteredArray = myFilter();
-	console.log(filteredArray)
-	createTable(filteredArray);    
-});
-var region = document.getElementsById('region');
-region.addEventListener('click', function () {
-var filteredArray = myFilter();
-	console.log(filteredArray)
-	createTable(filteredArray);
-});
-
-
-
 		
 function myFilter() {
 	var filter = [];
@@ -113,13 +133,10 @@ function myStatesArray() {
 	 return statesArray.sort()
 }
 
-myStatesArray()
-
-
 function selectState (){
 	var stateArray = myStatesArray();
 	console.log (stateArray);
- var selector = document.getElementById ("region");
+
 	for (i = 0; i< stateArray.length; i++) {
      var option = document.createElement("option");
 	 option.innerHTML = stateArray[i];
@@ -127,7 +144,7 @@ function selectState (){
 	}
 }
 
-selectState()
+
 		//returnisChecked;
 
 		//        dataState.innerHTML = members[i].

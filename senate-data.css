@@ -9,7 +9,7 @@ header {
 	margin-top: 1%;
 	width: 100%;
 	height: 19%;
-	
+
 }
 
 header > .logo {
@@ -28,10 +28,29 @@ header > .logo > img {
 	width: 90%;
 	height: 10%;
 }
-	.text_senate {
+
+.lengaged_table {
 	display: inline-block;
-	width: 79%
-		
-		.bottom {
-			text-align: center;
-		}
+	width: 40%;
+}
+
+.mengaged_table {
+	display: inline-block;
+	width: 40%;
+}
+
+.bottom {
+	text-align: center;
+}
+
+.flexbox_top {
+	display: flex;
+}
+
+#politics-data {
+	width: 100%;
+}
+
+.column-width {
+	width: 33.3%;
+}

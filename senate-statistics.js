@@ -1,58 +1,74 @@
-//Global Variables
-var members = data.results[0].members;
-var sortedArray = sortArrayBottomTen();
-var sortedArrayForTop = sortArrayTopTen();
-var leastEngaged = missedVotesSortArrayTopTen();
-var mostEngaged = missedVotesSortArrayBottomten();
-var leastLoyal = sortArrayBottomTen();
-var mostLoyal = sortArrayTopTen();
+//Global Variables 
 
-var statistics = {
-	"numberDemocrat": stateNumber("D"),
-	"numberRepublican": stateNumber("R"),
-	"numberIndependent": stateNumber("I"),
 
-	//Senate at a Glance Party - Number of Reps	% Voted with Prty
-	"averageDemocrat": Math.round(arraySum("D") / stateNumber("D")),
-	"averageRepublican": Math.round(arraySum("R") / stateNumber("R")),
-	"averageIndependent": Math.round(arraySum("I") / stateNumber("I")),
+getstatisticsData()
 
-	//Least loyal (Bottom 10% of the party) - Name	Number Party Votes	% Party Votes
-	"nameLeastLoyal": theNames(sortedArray),
-	"noPartyVLeastLoyal": arrayOfVotes(sortedArray),
-	"noPercPartyVLeastLoyal": percentageOfVotes(sortedArray),
+function getstatisticsData() {
+	fetch('https://api.propublica.org/congress/v1/113/senate/members.json', {
+			method: 'GET',
+			headers: {
+				'X-API-Key': "VGBTUMsjDxdmbxbqPyWJy7BBYeuophxBMi4ekoQB"
+			}
+		})
+		.then(r => r.json())
+		.then(json => {
+			console.log(json);
+			data = json;
+			members = data.results[0].members;
+			sortedArray = sortArrayBottomTen();
+			sortedArrayForTop = sortArrayTopTen();
+			leastEngaged = missedVotesSortArrayTopTen();
+			mostEngaged = missedVotesSortArrayBottomten();
+			leastLoyal = sortArrayBottomTen();
+			mostLoyal = sortArrayTopTen();
+			//				statistics = data.results["0"].members;
+			statistics = {
+				"numberDemocrat": stateNumber("D"),
+				"numberRepublican": stateNumber("R"),
+				"numberIndependent": stateNumber("I"),
+				"Total": stateNumber("D") + stateNumber("R") + stateNumber("I"),
 
-	//Most loyal (Top 10% of the party) - Name	Number Party Votes	% Party Votes
-	"nameMostLoyal": theNames(sortedArrayForTop),
-	"noPartyVMostLoyal": arrayOfVotes(sortedArrayForTop),
-	"noPercPartyVMostLoyal": percentageOfVotes(sortedArrayForTop),
+				//Senate at a Glance Party - Number of Reps	% Voted with Prty
+				"averageDemocrat": Math.round(arraySum("D") / stateNumber("D")) + "%",
+				"averageRepublican": Math.round(arraySum("R") / stateNumber("R")) + "%",
+				"averageIndependent": Math.round(arraySum("I") / stateNumber("I")) + "%",
+				"totalAverage": Math.round((arraySum("D") + arraySum("R") + arraySum("I")) / members.length) + "%",
 
-	//Least Engaged (Bottom 10% of the party) - Name Number of Missed Votes	% Missed
-	"nameLeastEngaged": theNames(leastEngaged),
-	"noMissedVotesLeastEngaged": arrayOfMissedVotes(leastEngaged),
-	"PercMissedVotesLeastEngaged": percentageOfMissedVotes(leastEngaged),
+				//Least loyal (Bottom 10% of the party) - Name	Number Party Votes	% Party Votes
+				"nameLeastLoyal": theNames(sortedArray),
+				"noPartyVLeastLoyal": arrayOfVotes(sortedArray),
+				"noPercPartyVLeastLoyal": percentageOfVotes(sortedArray),
 
-	//Most Engated (Top 10% of the party ) - Name Number of Missed Votes % Missed
-	"nameMostEngaged": theNames(mostEngaged),
-	"noMissedVotesMostEngaged": arrayOfMissedVotes(mostEngaged),
-	"PercMissedVotesMostEngaged": percentageOfMissedVotes(mostEngaged),
-};
+				//Most loyal (Top 10% of the party) - Name	Number Party Votes	% Party Votes
+				"nameMostLoyal": theNames(sortedArrayForTop),
+				"noPartyVMostLoyal": arrayOfVotes(sortedArrayForTop),
+				"noPercPartyVMostLoyal": percentageOfVotes(sortedArrayForTop),
 
-if (location.pathname == "/C:/Users/cknot/Documents/ExerciseTGIF/senate-attendance.html" || "/C:/Users/cknot/Documents/ExerciseTGIF/house-attendance.html") {
-	createTable(leastEngaged, "people")
-	createTable(mostEngaged, "mostEngaged")
-	senateAtAGlanceTable();
-} else if (location.pathname == "/C:/Users/cknot/Documents/ExerciseTGIF/senate_loyalty.html") {
-	createTableLoyalty(leastLoyal, "people")
-	createTableLoyalty(mostLoyal, "mostEngaged")
-	senateAtAGlanceTable();
+				//Least Engaged (Bottom 10% of the party) - Name Number of Missed Votes	% Missed
+				"nameLeastEngaged": theNames(leastEngaged),
+				"noMissedVotesLeastEngaged": arrayOfMissedVotes(leastEngaged),
+				"PercMissedVotesLeastEngaged": percentageOfMissedVotes(leastEngaged),
+
+				//Most Engated (Top 10% of the party ) - Name Number of Missed Votes % Missed
+				"nameMostEngaged": theNames(mostEngaged),
+				"noMissedVotesMostEngaged": arrayOfMissedVotes(mostEngaged),
+				"PercMissedVotesMostEngaged": percentageOfMissedVotes(mostEngaged),
+			}
+
+			if (location.pathname == "/C:/Users/cknot/Documents/ExerciseTGIF/senate-attendance.html" || "/C:/Users/cknot/Documents/ExerciseTGIF/house-attendance.html") {
+				createTable(leastEngaged, "people")
+				createTable(mostEngaged, "mostEngaged")
+				senateAtAGlanceTable();
+			} else if (location.pathname == "/C:/Users/cknot/Documents/ExerciseTGIF/senate_loyalty.html") {
+				createTableLoyalty(leastLoyal, "people")
+				createTableLoyalty(mostLoyal, "mostEngaged")
+				senateAtAGlanceTable();
+			}
+		});
 }
-
 
 function stateNumber(party) {
 	var array = [];
-	//	var republican = [];
-	//	var independant = [];
 	for (var i = 0; i < members.length; i++) {
 		if (members[i].party == party) {
 			array.push(members[i]);
@@ -61,7 +77,6 @@ function stateNumber(party) {
 	return array.length;
 }
 
-//stateNumber()
 
 function arraySum(party) {
 	var total = 0;
@@ -199,7 +214,7 @@ function senateAtAGlanceTable() {
 	var dataTotalDem = document.createElement("TD");
 	dataTotalDem.innerHTML = statistics["numberRepublican"];
 	var aveDem = document.createElement("TD");
-	aveDem.innerHTML = statistics["averageDemocrat"];
+	aveDem.innerHTML = statistics["averageRepublican"];
 	demRow.appendChild(dataDemName);
 	demRow.appendChild(dataTotalDem);
 	demRow.appendChild(aveDem);
@@ -211,11 +226,26 @@ function senateAtAGlanceTable() {
 	var dataTotalDem = document.createElement("TD");
 	dataTotalDem.innerHTML = statistics["numberIndependent"];
 	var aveDem = document.createElement("TD");
+
+	var row = document.createElement("TR");
+	var totalAverage = document.createElement("TD")
+	totalAverage.innerHTML = "Total:";
+	var totalMembers = document.createElement("TD");
+	totalMembers.innerHTML = members.length;
+	var totalAve = document.createElement("TD");
+	totalAve.innerHTML = statistics["totalAverage"];
+
 	aveDem.innerHTML = statistics["averageIndependent"];
 	demRow.appendChild(dataDemName);
 	demRow.appendChild(dataTotalDem);
 	demRow.appendChild(aveDem);
+	row.appendChild(totalAverage);
+	row.appendChild(totalMembers);
+	row.appendChild(totalAve);
 	tbdy.appendChild(demRow);
+	tbdy.appendChild(row)
+
+
 }
 
 

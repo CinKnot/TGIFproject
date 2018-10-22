@@ -1,35 +1,53 @@
-var members = data.results[0].members;
 var selector = document.getElementById("region");
 var republican = document.getElementById('republican');
 var democrat = document.getElementById('democrat');
 var independant = document.getElementById('independant');
 
-republican.addEventListener('click', function () {
-	var filteredArray = myFilter();
-	console.log(filteredArray)
-	createTable(filteredArray);
-});
 
-democrat.addEventListener('click', function () {
-	var filteredArray = myFilter();
-	console.log(filteredArray)
-	createTable(filteredArray);
-});
 
-independant.addEventListener('click', function () {
-	var filteredArray = myFilter();
-	console.log(filteredArray)
-	createTable(filteredArray);
-});
+getSenateData()
 
-selector.addEventListener('change', function () {
-	var filteredArray = myFilter();
-	console.log(filteredArray)
-	createTable(filteredArray);
-});
+function getSenateData() {
+	fetch('https://api.propublica.org/congress/v1/113/senate/members.json', {
+			method: 'GET',
+			headers: {
+				'X-API-Key': "VGBTUMsjDxdmbxbqPyWJy7BBYeuophxBMi4ekoQB"
+			}
+		})
+		.then(r => r.json())
+		.then(json => {
+			console.log(json);
+			data = json;
+			members = data.results["0"].members;
+		
+			myStatesArray()
+			selectState()
 
-myStatesArray()
-selectState()
+			republican.addEventListener('click', function () {
+				filteredArray = myFilter();
+				console.log(filteredArray)
+				createTable(filteredArray);
+			});
+
+			democrat.addEventListener('click', function () {
+				filteredArray = myFilter();
+				console.log(filteredArray)
+				createTable(filteredArray);
+			});
+
+			independant.addEventListener('click', function () {
+				filteredArray = myFilter();
+				console.log(filteredArray)
+				createTable(filteredArray);
+			});
+
+			selector.addEventListener('change', function () {
+				filteredArray = myFilter();
+				console.log(filteredArray)
+				createTable(filteredArray);
+			});
+		})
+}
 
 function createTable(array) {
 
