@@ -45,8 +45,8 @@
 							Attendance
 						</a>
 						<div class="dropdown-menu" aria- labelledby="navbarDropdown">
-							<a class="active dropdown-item">House</a>
-							<a class="drodown-item" href="senate-data.html">Senate</a>
+							<a class="dropdown-item">House</a>
+							<a class="dropdown-item" href="senate-attendance.html">Senate</a>
 						</div>
 					</li>
 					<li class="nav-item dropdown">
@@ -54,8 +54,8 @@
 							Party Loyality
 						</a>
 						<div class="dropdown-menu" aria- labelledby="navbarDropdown">
-							<a class="active dropdown-item">House</a>
-							<a class="drodown-item" href="senate-data.html">Senate</a>
+							<a class="dropdown-item">House</a>
+							<a class="dropdown-item" href="senate_loyalty.html">Senate</a>
 						</div>
 					</li>
 				</ul>
@@ -64,43 +64,47 @@
 	</div>
 
 
+	<div class="flexbox_top">
+		<div class="container text_senate">
+			<h2>Attendance</h2>
+			<p>The Constitution specifies that a majority of members constitutes a quorum to do business in each house. Representatives and senators rarely force the presence of a quorum by demanding quorum calls; thus, in most cases, debates continue even if a majority is not present.</p>
 
-	<div class="text_senate">
-		<h2>Attendance</h2>
-		<p>The Constitution specifies that a majority of members constitutes a quorum to do business in each house. Representatives and senators rarely force the presence of a quorum by demanding quorum calls; thus, in most cases, debates continue even if a majority is not present.</p>
+			<p>The Senate uses roll-call votes; a clerk calls out the names of all the senators, each senator stating "aye" or "no" when his or her name is announced. The House reserves roll-call votes for the most formal matters, as a roll-call of all 435 representatives takes quite some time; normally, members vote by electronic device. In the case of a tie, the motion in question fails. In the Senate, the Vice President may (if present) cast the tiebreaking vote.</p>		</div>
 
-		<p>The Senate uses roll-call votes; a clerk calls out the names of all the senators, each senator stating "aye" or "no" when his or her name is announced. The House reserves roll-call votes for the most formal matters, as a roll-call of all 435 representatives takes quite some time; normally, members vote by electronic device. In the case of a tie, the motion in question fails. In the Senate, the Vice President may (if present) cast the tiebreaking vote.</p>
+		<div class="container glance_table">
+			<h2>House at a glance</h2>
+			<table id="party-data" class="table">
+				<thead>
+					<tr>
+						<th>Party</th>
+						<th>Number of Reps</th>
+						<th>% Voted with Prty</th>
+					</tr>
+				</thead>
+				<tbody id="boys">
+					<tr>
+						<td>Republican</td>
+						<td>--</td>
+						<td>--</td>
+					</tr>
+					<tr>
+						<td>Democrat</td>
+						<td>--</td>
+						<td>--</td>
+					</tr>
+					<tr>
+						<td>Independent</td>
+						<td>--</td>
+						<td>--</td>
+					</tr>
+				</tbody>
+			</table>
+	</div>
+	</div>
 
-		<h2>Senate at a glance</h2>
-		<table id="party-data">
-			<thead>
-				<tr>
-					<th>Party</th>
-					<th>Number of Reps</th>
-					<th>% Voted with Prty</th>
-				</tr>
-			</thead>
-			<tbody id="boys">
-				<tr>
-					<td>Republican</td>
-					<td>--</td>
-					<td>--</td>
-				</tr>
-				<tr>
-					<td>Democrat</td>
-					<td>--</td>
-					<td>--</td>
-				</tr>
-				<tr>
-					<td>Independent</td>
-					<td>--</td>
-					<td>--</td>
-				</tr>
-			</tbody>
-		</table>
-
+	<div class="container lengaged_table">
 		<h2>Least Engaged (Bottom 10% Attendance)</h2>
-		<table>
+		<table id="politics-data" class="table">
 			<thead>
 				<tr>
 					<th>Name</th>
@@ -141,9 +145,11 @@
 				</tr>
 			</tbody>
 		</table>
+	</div>
 
+	<div class="container mengaged_table">
 		<h2>Most Engaged (Top 10% Attendance)</h2>
-		<table>
+		<table id="politcs-data" class="table">
 			<thead>
 				<tr>
 					<th>Name</th>
@@ -189,15 +195,15 @@
 				</tr>
 			</tbody>
 		</table>
-
 	</div>
-	<div class="bottom">
+
+	<div class="container bottom ">
 
 		<p class="jumbotron text-center">2016 TGIF All rights are reserved.</p>
 
 	</div>
 
-<!--	<script src="pro-congress-113-house.js"></script>-->
+	<!--	<script src="pro-congress-113-house.js"></script>-->
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

@@ -39,6 +39,16 @@ header > .logo > img {
 	width: 40%;
 }
 
+.lloyal_table {
+	display: inline-block;
+	width: 40%;
+}
+
+.mloyal_table {
+	display: inline-block;
+	width: 40%;
+}
+
 .bottom {
 	text-align: center;
 }

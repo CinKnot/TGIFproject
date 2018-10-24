@@ -4,13 +4,19 @@ var app = new Vue({
 		members: [],
 		allMembers: [],
 		states: [],
+		senate: 'https://api.propublica.org/congress/v1/113/senate/members.json',
+		house: 'https://api.propublica.org/congress/v1/113/house/members.json',
 	},
 	created() {
-		this.getData();
+		if (location.pathname == "/senate-data.html") {
+			this.getData(this.senate);
+		} else if (location.pathname == "/house-data.html") {
+			this.getData(this.house);
+		}
 	},
 	methods: {
-		getData() {
-			fetch('https://api.propublica.org/congress/v1/113/senate/members.json', {
+		getData(url) {
+			fetch(url, {
 					method: 'GET',
 					headers: {
 						'X-API-Key': "VGBTUMsjDxdmbxbqPyWJy7BBYeuophxBMi4ekoQB"
@@ -18,6 +24,7 @@ var app = new Vue({
 				})
 				.then(r => r.json())
 				.then(json => {
+				console.log(json)
 					app.members = json.results[0].members;
 					app.allMembers = json.results[0].members;
 					app.myStatesArray();
@@ -27,9 +34,9 @@ var app = new Vue({
 			var filter = [];
 			var members = app.allMembers;
 			var selector = document.getElementById("region");
-			var	republican = document.getElementById("republican");
-			var	democrat =document.getElementById("democrat");
-			var	independant= document.getElementById("independant");
+			var republican = document.getElementById("republican");
+			var democrat = document.getElementById("democrat");
+			var independant = document.getElementById("independant");
 			for (var i = 0; i < members.length; i++) {
 				if (selector.value == members[i].state || selector.value == "All") {
 

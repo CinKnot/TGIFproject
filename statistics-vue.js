@@ -1,15 +1,40 @@
 //Global Variables 
 
-if (location.pathname == "/senate-attendance.html" || location.pathname == "/senate_loyalty.html") {
-	getstatisticsData('https://api.propublica.org/congress/v1/113/senate/members.json')
-} else if (location.pathname == "/house-attendance.html" || location.pathname == "/house-party-loyalty.html") {
-	getstatisticsData('https://api.propublica.org/congress/v1/113/house/members.json')
-}
+var app = new Vue({
+	el: "#app",
+	data: {
+		members: [],
+		allMembers: [],
+		states: [],
+		senate: 'https://api.propublica.org/congress/v1/113/senate/members.json',
+		house: 'https://api.propublica.org/congress/v1/113/house/members.json',
+	},
+	created() {
+		if (location.pathname == "/senate-data.html") {
+			this.getData(this.senate);
+		} else if (location.pathname == "/house-data.html") {
+			this.getData(this.house);
+		}
+	},
+	methods: {
+		getData(url) {
+			fetch(url, {
+					method: 'GET',
+					headers: {
+						'X-API-Key': "VGBTUMsjDxdmbxbqPyWJy7BBYeuophxBMi4ekoQB"
+					}
+				})
+				.then(r => r.json())
+				.then(json => {
+				console.log(json)
+					app.members = json.results[0].members;
+					app.allMembers = json.results[0].members;
+					app.myStatesArray();
+				})
+getstatisticsData()
 
-
-function getstatisticsData(url) {
-	console.log(url)
-	fetch(url, {
+function getstatisticsData() {
+	fetch('https://api.propublica.org/congress/v1/113/senate/members.json', {
 			method: 'GET',
 			headers: {
 				'X-API-Key': "VGBTUMsjDxdmbxbqPyWJy7BBYeuophxBMi4ekoQB"
@@ -231,22 +256,16 @@ function senateAtAGlanceTable() {
 	var dataTotalDem = document.createElement("TD");
 	dataTotalDem.innerHTML = statistics["numberIndependent"];
 	var aveDem = document.createElement("TD");
+
 	var row = document.createElement("TR");
 	var totalAverage = document.createElement("TD")
 	totalAverage.innerHTML = "Total:";
 	var totalMembers = document.createElement("TD");
 	totalMembers.innerHTML = members.length;
 	var totalAve = document.createElement("TD");
-	if (statistics.totalAve === "NaN%") {
-		totalAve.innerHTML = '0%';
-	} else {
-		totalAve.innerHTML =
-			statistics.totalAve;
-	}
 	totalAve.innerHTML = statistics["totalAverage"];
-	totalAve.innerHTML = statistics["averageIndependent"];
-	
 
+	aveDem.innerHTML = statistics["averageIndependent"];
 	demRow.appendChild(dataDemName);
 	demRow.appendChild(dataTotalDem);
 	demRow.appendChild(aveDem);
@@ -258,6 +277,9 @@ function senateAtAGlanceTable() {
 
 
 }
+
+
+
 
 function createTable(array, id) {
 
