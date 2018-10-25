@@ -1,11 +1,8 @@
-//Global Variables 
-
 if (location.pathname == "/senate-attendance.html" || location.pathname == "/senate_loyalty.html") {
 	getstatisticsData('https://api.propublica.org/congress/v1/113/senate/members.json')
 } else if (location.pathname == "/house-attendance.html" || location.pathname == "/house-party-loyalty.html") {
 	getstatisticsData('https://api.propublica.org/congress/v1/113/house/members.json')
 }
-
 
 function getstatisticsData(url) {
 	console.log(url)
@@ -19,6 +16,7 @@ function getstatisticsData(url) {
 		.then(json => {
 			console.log(json);
 			data = json;
+			showPage();
 			members = data.results[0].members;
 			sortedArray = sortArrayBottomTen();
 			sortedArrayForTop = sortArrayTopTen();
@@ -26,35 +24,31 @@ function getstatisticsData(url) {
 			mostEngaged = missedVotesSortArrayBottomten();
 			leastLoyal = sortArrayBottomTen();
 			mostLoyal = sortArrayTopTen();
-			//				statistics = data.results["0"].members;
+			//							statistics = data.results["0"].members;
 			statistics = {
 				"numberDemocrat": stateNumber("D"),
 				"numberRepublican": stateNumber("R"),
 				"numberIndependent": stateNumber("I"),
 				"Total": stateNumber("D") + stateNumber("R") + stateNumber("I"),
 
-				//Senate at a Glance Party - Number of Reps	% Voted with Prty
+
 				"averageDemocrat": Math.round(arraySum("D") / stateNumber("D")) + "%",
 				"averageRepublican": Math.round(arraySum("R") / stateNumber("R")) + "%",
 				"averageIndependent": Math.round(arraySum("I") / stateNumber("I")) + "%",
 				"totalAverage": Math.round((arraySum("D") + arraySum("R") + arraySum("I")) / members.length) + "%",
 
-				//Least loyal (Bottom 10% of the party) - Name	Number Party Votes	% Party Votes
 				"nameLeastLoyal": theNames(sortedArray),
 				"noPartyVLeastLoyal": arrayOfVotes(sortedArray),
 				"noPercPartyVLeastLoyal": percentageOfVotes(sortedArray),
 
-				//Most loyal (Top 10% of the party) - Name	Number Party Votes	% Party Votes
 				"nameMostLoyal": theNames(sortedArrayForTop),
 				"noPartyVMostLoyal": arrayOfVotes(sortedArrayForTop),
 				"noPercPartyVMostLoyal": percentageOfVotes(sortedArrayForTop),
 
-				//Least Engaged (Bottom 10% of the party) - Name Number of Missed Votes	% Missed
 				"nameLeastEngaged": theNames(leastEngaged),
 				"noMissedVotesLeastEngaged": arrayOfMissedVotes(leastEngaged),
 				"PercMissedVotesLeastEngaged": percentageOfMissedVotes(leastEngaged),
 
-				//Most Engated (Top 10% of the party ) - Name Number of Missed Votes % Missed
 				"nameMostEngaged": theNames(mostEngaged),
 				"noMissedVotesMostEngaged": arrayOfMissedVotes(mostEngaged),
 				"PercMissedVotesMostEngaged": percentageOfMissedVotes(mostEngaged),
@@ -71,7 +65,6 @@ function getstatisticsData(url) {
 			}
 		});
 }
-
 function stateNumber(party) {
 	var array = [];
 	for (var i = 0; i < members.length; i++) {
@@ -81,7 +74,6 @@ function stateNumber(party) {
 	}
 	return array.length;
 }
-
 
 function arraySum(party) {
 	var total = 0;
@@ -94,8 +86,6 @@ function arraySum(party) {
 
 	return (total);
 }
-
-///////////////////////////////////////////////////////
 
 function sortArrayBottomTen() {
 	members.sort(function (a, b) {
@@ -194,8 +184,6 @@ function theNames(array) {
 	return empty
 }
 
-
-
 function senateAtAGlanceTable() {
 	var table = document.getElementById("party-data");
 	var tbdy = document.getElementById("boys");
@@ -230,32 +218,30 @@ function senateAtAGlanceTable() {
 	dataDemName.innerHTML = "Independent";
 	var dataTotalDem = document.createElement("TD");
 	dataTotalDem.innerHTML = statistics["numberIndependent"];
-	var aveDem = document.createElement("TD");
+	var aveInd = document.createElement("TD");
+	if (statistics["averageIndependent"] === "NaN%") {
+		aveInd.innerHTML = '0%';
+	} else {
+		aveInd.innerHTML =
+			statistics["averageIndependent"];
+	}
+
 	var row = document.createElement("TR");
 	var totalAverage = document.createElement("TD")
 	totalAverage.innerHTML = "Total:";
 	var totalMembers = document.createElement("TD");
 	totalMembers.innerHTML = members.length;
 	var totalAve = document.createElement("TD");
-	if (statistics.totalAve === "NaN%") {
-		totalAve.innerHTML = '0%';
-	} else {
-		totalAve.innerHTML =
-			statistics.totalAve;
-	}
 	totalAve.innerHTML = statistics["totalAverage"];
-	totalAve.innerHTML = statistics["averageIndependent"];
-	
 
 	demRow.appendChild(dataDemName);
 	demRow.appendChild(dataTotalDem);
-	demRow.appendChild(aveDem);
+	demRow.appendChild(aveInd);
 	row.appendChild(totalAverage);
 	row.appendChild(totalMembers);
 	row.appendChild(totalAve);
 	tbdy.appendChild(demRow);
 	tbdy.appendChild(row)
-
 
 }
 
@@ -268,9 +254,9 @@ function createTable(array, id) {
 		var row = document.createElement("TR");
 		var name;
 		if (array[i].middle_name == null) {
-			name = array[i].first_name + " " + array[i].last_name
+			name = (array[i].first_name + " " + array[i].last_name).link(array[i].url)
 		} else {
-			name = array[i].first_name + " " + array[i].middle_name + " " + array[i].last_name;
+			name = (array[i].first_name + " " + array[i].middle_name + " " + array[i].last_name).link(array[i].url);
 		}
 
 		var missedVotesPct = array[i].missed_votes_pct;
@@ -287,7 +273,7 @@ function createTable(array, id) {
 		tbdy.appendChild(row);
 
 		var nameCell = document.createElement("TD");
-		nameCell.innerHTML = missedVotesPct;
+		nameCell.innerHTML = missedVotesPct + "%";
 		row.appendChild(nameCell);
 		tbdy.appendChild(row);
 
@@ -322,9 +308,14 @@ function createTableLoyalty(array, id) {
 		tbdy.appendChild(row);
 
 		var nameCell = document.createElement("TD");
-		nameCell.innerHTML = percentageOfVotes;
+		nameCell.innerHTML = percentageOfVotes + "%";
 		row.appendChild(nameCell);
 		tbdy.appendChild(row);
 
 	}
+}
+
+function showPage() {
+	document.getElementById("loader").style.display = "none";
+	document.getElementById("myDiv").style.display = "block";
 }

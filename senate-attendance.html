@@ -9,14 +9,16 @@
 </head>
 
 <body>
+
 	<header>
-
-
-		<div class="container logo_senate">
-
-			<img src="logotgif.png" alt="the logo of the TGIF" />
-			<h1>Transparent Government in Fact</h1>
+		<div class="topper">
+			<div class="container logo_senate">
+				<img src="logotgif.png" alt="the logo of the TGIF" />
+				<h1>Transparent Government in Fact</h1>
+			</div>
+			<div class="email"><span>&#9993;<a href="mailto:tgif.net">info@tgif.net</a></span></div>
 		</div>
+
 	</header>
 
 	<div class="container navigation">
@@ -64,162 +66,160 @@
 		</nav>
 	</div>
 
+	<div id="loader"></div>
+	<div style="display:none;" id="myDiv" class="animate-bottom">
 
-	<div class="flexbox_top">
-		<div class="container text_senate">
 
-			<h2>Attendance</h2>
-			<p>The Constitution specifies that a majority of members constitutes a quorum to do business in each house. Representatives and senators rarely force the presence of a quorum by demanding quorum calls; thus, in most cases, debates continue even if a majority is not present.</p>
+		<div class="flexbox_top">
+			<div class="container text_senate">
 
-			<p>The Senate uses roll-call votes; a clerk calls out the names of all the senators, each senator stating "aye" or "no" when his or her name is announced. The House reserves roll-call votes for the most formal matters, as a roll-call of all 435 representatives takes quite some time; normally, members vote by electronic device. In the case of a tie, the motion in question fails. In the Senate, the Vice President may (if present) cast the tiebreaking vote.</p>
+				<h2>Attendance</h2>
+				<p>The Constitution specifies that a majority of members constitutes a quorum to do business in each house. Representatives and senators rarely force the presence of a quorum by demanding quorum calls; thus, in most cases, debates continue even if a majority is not present.</p>
+
+				<p>The Senate uses roll-call votes; a clerk calls out the names of all the senators, each senator stating "aye" or "no" when his or her name is announced. The House reserves roll-call votes for the most formal matters, as a roll-call of all 435 representatives takes quite some time; normally, members vote by electronic device. In the case of a tie, the motion in question fails. In the Senate, the Vice President may (if present) cast the tiebreaking vote.</p>
+			</div>
+
+			<div class="container glance_table">
+				<h2>Senate at a glance</h2>
+				<table id="party-data" class="table">
+					<thead>
+						<tr>
+							<th>Party</th>
+							<th>Number of Reps</th>
+							<th>% Voted with Prty</th>
+						</tr>
+					</thead>
+					<tbody id="boys">
+						<tr>
+							<td></td>
+							<td>--</td>
+							<td>--</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>--</td>
+							<td>--</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>--</td>
+							<td>--</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 
+		<div class="flexbox_bottom">
+			<div class="lengaged_table">
+				<h2>Least Engaged (Bottom 10% Attendance)</h2>
+				<table id="politics-data" class="table">
+					<thead>
+						<tr>
+							<th class=column-width>Name</th>
+							<th class=column-width>Number of Missed Votes</th>
+							<th class=column-width>% Missed</th>
+						</tr>
+					</thead>
+					<tbody id="people">
+						<tr>
+							<td>--</td>
+							<td>--</td>
+							<td>--</td>
+						</tr>
+						<tr>
+							<td>--</td>
+							<td>--</td>
+							<td>--</td>
+						</tr>
+						<tr>
+							<td>--</td>
+							<td>--</td>
+							<td>--</td>
+						</tr>
+						<tr>
+							<td>--</td>
+							<td>--</td>
+							<td>--</td>
+						</tr>
+						<tr>
+							<td>--</td>
+							<td>--</td>
+							<td>--</td>
+						</tr>
+						<tr>
+							<td>--</td>
+							<td>--</td>
+							<td>--</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 
-		<div class="container glance_table">
-			<h2>Senate at a glance</h2>
-			<table id="party-data" class="table">
-				<thead>
-					<tr>
-						<th>Party</th>
-						<th>Number of Reps</th>
-						<th>% Voted with Prty</th>
-					</tr>
-				</thead>
-				<tbody id="boys">
-					<tr>
-						<td></td>
-						<td>--</td>
-						<td>--</td>
-					</tr>
-					<tr>
-						<td></td>
-						<td>--</td>
-						<td>--</td>
-					</tr>
-					<tr>
-						<td></td>
-						<td>--</td>
-						<td>--</td>
-					</tr>
-				</tbody>
-			</table>
+			<div class="mengaged_table">
+				<h2>Most Engaged (Top 10% Attendance)</h2>
+				<table id="politcs-data" class="table">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Number of Missed Votes</th>
+							<th>% Missed</th>
+						</tr>
+					</thead>
+					<tbody id="mostEngaged">
+						<tr>
+							<td>--</td>
+							<td>--</td>
+							<td>--</td>
+						</tr>
+						<tr>
+							<td>--</td>
+							<td>--</td>
+							<td>--</td>
+						</tr>
+						<tr>
+							<td>--</td>
+							<td>--</td>
+							<td>--</td>
+						</tr>
+						<tr>
+							<td>--</td>
+							<td>--</td>
+							<td>--</td>
+						</tr>
+						<tr>
+							<td>--</td>
+							<td>--</td>
+							<td>--</td>
+						</tr>
+						<tr>
+							<td>--</td>
+							<td>--</td>
+							<td>--</td>
+						</tr>
+						<tr>
+							<td>--</td>
+							<td>--</td>
+							<td>--</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
-	</div>
 
-	<div class="container lengaged_table">
-		<h2>Least Engaged (Bottom 10% Attendance)</h2>
-		<table id="politics-data" class="table">
-			<thead>
-				<tr>
-					<th class=column-width>Name</th>
-					<th class=column-width>Number of Missed Votes</th>
-					<th class=column-width>% Missed</th>
-				</tr>
-			</thead>
-			<tbody id="people">
-				<tr>
-					<td>--</td>
-					<td>--</td>
-					<td>--</td>
-				</tr>
-				<tr>
-					<td>--</td>
-					<td>--</td>
-					<td>--</td>
-				</tr>
-				<tr>
-					<td>--</td>
-					<td>--</td>
-					<td>--</td>
-				</tr>
-				<tr>
-					<td>--</td>
-					<td>--</td>
-					<td>--</td>
-				</tr>
-				<tr>
-					<td>--</td>
-					<td>--</td>
-					<td>--</td>
-				</tr>
-				<tr>
-					<td>--</td>
-					<td>--</td>
-					<td>--</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-
-	<div class="container mengaged_table">
-		<h2>Most Engaged (Top 10% Attendance)</h2>
-		<table id="politcs-data" class="table">
-			<thead>
-				<tr>
-					<th>Name</th>
-					<th>Number of Missed Votes</th>
-					<th>% Missed</th>
-				</tr>
-			</thead>
-			<tbody id="mostEngaged">
-				<tr>
-					<td>--</td>
-					<td>--</td>
-					<td>--</td>
-				</tr>
-				<tr>
-					<td>--</td>
-					<td>--</td>
-					<td>--</td>
-				</tr>
-				<tr>
-					<td>--</td>
-					<td>--</td>
-					<td>--</td>
-				</tr>
-				<tr>
-					<td>--</td>
-					<td>--</td>
-					<td>--</td>
-				</tr>
-				<tr>
-					<td>--</td>
-					<td>--</td>
-					<td>--</td>
-				</tr>
-				<tr>
-					<td>--</td>
-					<td>--</td>
-					<td>--</td>
-				</tr>
-				<tr>
-					<td>--</td>
-					<td>--</td>
-					<td>--</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-
-
-
-
-
-
-	<div class="container bottom">
-
-		<p class="jumbotron text-center">2016 TGIF All rights are reserved.</p>
+		<div class="footer">
+			<p class="text-center">&#169;2016 TGIF | All Rights Reserved</p>
+		</div>
 
 	</div>
 
-<!--	<script src="pro-congress-113-senate.js"></script>-->
-	
+	<!--	<script src="pro-congress-113-senate.js"></script>-->
+
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 	<script src="senate-statistics.js"></script>
 
 </body>
-
 
 </html>

@@ -12,10 +12,14 @@
 	<div id="app">
 		<header>
 
-			<div class="container logo_house">
-				<img src="logotgif.png" alt="the logo of the TGIF" />
-				<h1>Transparent Government in Fact</h1>
+			<div class="topper">
+				<div class="container logo_house">
+					<img src="logotgif.png" alt="the logo of the TGIF" />
+					<h1>Transparent Government in Fact</h1>
+				</div>
+				<div class="email"><span>&#9993;<a href="mailto:tgif.net">info@tgif.net</a></span></div>
 			</div>
+
 		</header>
 
 		<div class="container navigation">
@@ -46,7 +50,7 @@
 								Attendance
 							</a>
 							<div class="dropdown-menu" aria- labelledby="navbarDropdown">
-								<a class="dropdown-item">House</a>
+								<a class="dropdown-item" href="house-attendance.html">House</a>
 								<a class="dropdown-item" href="senate-attendance.html">Senate</a>
 							</div>
 						</li>
@@ -55,8 +59,8 @@
 								Party Loyality
 							</a>
 							<div class="dropdown-menu" aria- labelledby="navbarDropdown">
-								<a class="dropdown-item">House</a>
-								<a class="dropdown-item" href="senate_loyalty.html">Senate</a>
+								<a class="dropdown-item" href="house-party-loyalty.html">House</a>
+								<a class=" dropdown-item" href="senate_loyalty.html">Senate</a>
 							</div>
 						</li>
 					</ul>
@@ -64,7 +68,11 @@
 			</nav>
 		</div>
 
+	<div id="loader"></div>
+	<div style="display:none;" id="myDiv" class="animate-bottom">
 		<header>
+
+
 			<div class="container-fluid">
 				<div class="text_congress">
 
@@ -79,9 +87,9 @@
 
 		<div class="choice">
 			<p>Filter by party:
-				<input id="republican" type="checkbox" name="Party" value="Republican" @click="myFilter()"checked>Republican
-				<input id="democrat" type="checkbox" name="Party" value="Democrat" required @click="myFilter()"checked>Democrat
-				<input id="independant" type="checkbox" name="Party" value="Independant" required @click="myFilter()"checked>Independant
+				<input id="republican" type="checkbox" name="Party" value="Republican" @click="myFilter()" checked>Republican
+				<input id="democrat" type="checkbox" name="Party" value="Democrat" required @click="myFilter()" checked>Democrat
+				<input id="independant" type="checkbox" name="Party" value="Independant" required @click="myFilter()" checked>Independant
 			</p>
 		</div>
 
@@ -105,25 +113,23 @@
 					<th>Total Votes</th>
 				</tr>
 				<tr v-for="member in members">
-					<td>{{member.first_name}} <span v-if="member.middle_name != null">{{member.middle_name}}</span>
-						{{member.last_name}}</td>
+					<td><a :href="member.url">{{member.first_name}} <span v-if="member.middle_name != null">{{member.middle_name}}</span>
+						{{member.last_name}}</a></td>
 					<td>{{member.party}}</td>
 					<td>{{member.state}}</td>
 					<td>{{member.seniority}}</td>
 					<td>{{member.total_votes}}</td>
-
-
 				</tr>
 			</tbody>
 		</table>
 
-		<div class="bottom">
-			<p class="jumbotron text-center">2016 TGIF All rights are reserved.</p>
-
+		<div class="footer">
+			<p class="text-center">&#169;2016 TGIF | All Rights Reserved</p>
 		</div>
 
-	</div>
 
+	</div>
+	</div>
 	<!--	<script src="pro-congress-113-house.js"></script>-->
 
 

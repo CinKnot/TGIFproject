@@ -18,8 +18,9 @@ function getSenateData() {
 		.then(json => {
 			console.log(json);
 			data = json;
+			showPage();
 			members = data.results["0"].members;
-		
+
 			myStatesArray()
 			selectState()
 
@@ -134,4 +135,18 @@ function selectState() {
 		option.innerHTML = stateArray[i];
 		selector.appendChild(option);
 	}
+}
+$('.ReadMore2').click(function(){
+		var $this = $(this);
+		$this.toggleClass('ReadMore2');
+		if($this.hasClass('ReadMore2')){
+			$this.text('Read More');			
+		} else {
+			$this.text('Read Less');
+		}
+	});
+
+function showPage() {
+	document.getElementById("loader").style.display = "none";
+	document.getElementById("myDiv").style.display = "block";
 }

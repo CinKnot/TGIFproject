@@ -24,7 +24,8 @@ var app = new Vue({
 				})
 				.then(r => r.json())
 				.then(json => {
-				console.log(json)
+					console.log(json)
+					app.showPage();
 					app.members = json.results[0].members;
 					app.allMembers = json.results[0].members;
 					app.myStatesArray();
@@ -67,5 +68,9 @@ var app = new Vue({
 			}
 			app.states = statesArray.sort();
 		},
+		showPage() {
+			document.getElementById("loader").style.display = "none";
+			document.getElementById("myDiv").style.display = "block";
+		}
 	},
 })
